@@ -10,7 +10,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatInputModule} from '@angular/material/input';
 import { 
   MatButtonModule,
   MatIconModule,
@@ -36,7 +38,11 @@ import { ReservationsComponent } from './reservations/reservations/reservations.
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    DragDropModule,
+    MatInputModule,
+    AngularFontAwesomeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
