@@ -1,0 +1,98 @@
+{
+    "reservations":[
+        {
+            "Id": 3745,
+            "Services": [
+                {
+                    "EquipmentId": 3432,
+                    "AccServiceIds": [],
+                    "AssemblyParts": [],
+                    "ReservationId": 3745
+                },
+                {
+                    "EquipmentId": 3432,
+                    "AccServiceIds": [],
+                    "AssemblyParts": [],
+                    "ReservationId": 3745
+                }
+            ],
+            "StartTime": "2019-11-21T08:33:00",
+            "EndTime": "2019-11-21T09:05:01.533",
+            "Username": "test_user",
+            "Collaborators": [],
+            "UserGroupId": "R12_P4B_UserGroup",
+            "BudgetId": 1197,
+            "BudgetExperimentId": 285,
+            "InstituteProjectId": null,
+            "ExperimentId": null,
+            "ServiceRequestProjectId": null,
+            "WorkflowBooking": null,
+            "ExternalCustomerId": null,
+            "FundingType": 0,
+            "PurchaseOrder": null,
+            "Reference": null,
+            "Transfer": null,
+            "Tutoring": false,
+            "Status": 5,
+            "Repeat": null,
+            "AllStartTimes": null,
+            "InsertedAt": "2019-11-21T08:32:54.587",
+            "InsertedBy": "test_user",
+            "UpdatedAt": "2019-11-21T09:06:29.21",
+            "UpdatedBy": "BookitLabSupport",
+            "CancelledAt": "2019-11-21T09:06:29.21",
+            "Remarks": null,
+            "TutorName": null,
+            "CustomFormValues": null,
+            "Name": null,
+            "ReservationToTakeOver": null
+        },
+        {
+            "Id": 3746,
+            "Services": [
+                {
+                    "EquipmentId": 3432,
+                    "AccServiceIds": [],
+                    "AssemblyParts": [],
+                    "ReservationId": 3745
+                },
+                {
+                    "EquipmentId": 3432,
+                    "AccServiceIds": [],
+                    "AssemblyParts": [],
+                    "ReservationId": 3745
+                }
+            ],
+            "StartTime": "2019-11-21T08:33:00",
+            "EndTime": "2019-11-21T09:05:01.533",
+            "Username": "test_user",
+            "Collaborators": [],
+            "UserGroupId": "R12_P4B_UserGroup",
+            "BudgetId": 1197,
+            "BudgetExperimentId": 285,
+            "InstituteProjectId": null,
+            "ExperimentId": null,
+            "ServiceRequestProjectId": null,
+            "WorkflowBooking": null,
+            "ExternalCustomerId": null,
+            "FundingType": 0,
+            "PurchaseOrder": null,
+            "Reference": null,
+            "Transfer": null,
+            "Tutoring": false,
+            "Status": 5,
+            "Repeat": null,
+            "AllStartTimes": null,
+            "InsertedAt": "2019-11-21T08:32:54.587",
+            "InsertedBy": "test_user",
+            "UpdatedAt": "2019-11-21T09:06:29.21",
+            "UpdatedBy": "BookitLabSupport",
+            "CancelledAt": "2019-11-21T09:06:29.21",
+            "Remarks": null,
+            "TutorName": null,
+            "CustomFormValues": null,
+            "Name": null,
+            "ReservationToTakeOver": null
+        }
+    ]
+}

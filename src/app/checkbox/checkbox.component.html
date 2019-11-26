@@ -1,0 +1,11 @@
+ 
+   <form [formGroup]="formBox" (ngSubmit)="onSubmit()">
+                   
+        <div formArrayName="checkBoxes" *ngFor="let item of checkBoxArr; let i=index">
+            <input type="checkbox" [formControlName]="i" [checked]="item.status">
+             {{item.name}}
+        </div>
+     
+
+    <button class="btn btn-primary" type="submit">submit</button>
+</form> 

@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {FormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
@@ -15,15 +15,27 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import {MatInputModule} from '@angular/material/input';
 import { 
   MatButtonModule,
-  MatIconModule,
+   
   MatDatepickerModule
  } from '@angular/material';
 import { ReservationsComponent } from './reservations/reservations/reservations.component';
+import { TableComponent } from './table/table.component';
 
+import {HttpClientModule} from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
+import { CheckboxComponent } from './checkbox/checkbox.component';
+import { CheckboxDynamoComponent } from './checkbox-dynamo/checkbox-dynamo.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+ 
+import {MatIconModule} from '@angular/material/icon';
+ 
 @NgModule({
   declarations: [
     AppComponent,
-    ReservationsComponent
+    ReservationsComponent,
+    TableComponent,
+    CheckboxComponent,
+    CheckboxDynamoComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +53,12 @@ import { ReservationsComponent } from './reservations/reservations/reservations.
     MatInputModule,
     DragDropModule,
     MatInputModule,
-    AngularFontAwesomeModule
-    
+    AngularFontAwesomeModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    FormsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
