@@ -1,0 +1,43 @@
+<div class="table-wrapper">
+    <table class="table table-bordered ">
+        <thead>
+        <tr >
+          <th scope="col">#</th>
+          <th scope="col" *ngFor="let header of reservationsHeaders; let i=index">{{header}}</th>
+          
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let reservation of reservations; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td *ngFor="let prop of reservationsHeaders">
+          
+            {{ reservation[prop] }}
+          </td>
+           
+        </tr>
+        </tbody>
+      </table>
+</div>
+<form [formGroup]="reservationForm"  >
+  <!-- Add nested items dynamically-->
+  <div class="group-gap" formArrayName="addDynamicElement">
+      <ng-container *ngFor="let item of addDynamicElement.controls; let i = index">
+        <div class="custom-control custom-checkbox" >
+          <input type="checkbox" class="custom-control-input" id="item.value"  [formControlName]="i">
+          <label class="custom-control-label" for="item.value">{{item.value.value}}</label>
+      </div>
+           
+      </ng-container>
+    
+        <!-- <ul class="subjectList">
+           <li *ngFor="let item of addDynamicElement.controls; let i = index">
+             <input type="checkbox" class="form-control" [formControlName]="i">  
+               
+           </li>
+        </ul> -->
+      
+
+       
+  </div>
+</form>

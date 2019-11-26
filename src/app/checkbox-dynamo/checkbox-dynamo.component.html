@@ -1,0 +1,65 @@
+<div class="wrapper">
+        <form [formGroup]="formServ" (ngSubmit)="onSubmit()"  >
+            <div class="wrapper">
+                <div class="item" cdkDropList class="example-list" (cdkDropListDropped)="dropTable($event)">
+                        <div *ngFor="let reservation of reservTitleObject; let i=index" cdkDrag>
+                                <div class="card" *ngIf="reservation.status==true">
+                                        <div class="card-body">
+                                                <div formArrayName="boxes" >
+                                                        <!-- <input type="checkbox"  [formControlName] = "i" [checked]="reservation.status"> {{reservation.name}} -->
+                                                        <mat-checkbox class="example-margin"  [formControlName] = "i" [checked]="reservation.status" [(ngModel)]="reservation.status">{{reservation.name}}</mat-checkbox>
+                                            </div>
+                                        </div>
+                                      </div>
+                                   
+                                    </div>
+                </div>
+                <div class="item">
+                    <ng-container *ngFor="let reservation of reservTitleObject; let i=index">
+                            <div class="card" *ngIf="reservation.status==false" style="margin: 0.7vh 0 0.8vh 0">
+                                    <div class="card-body">
+                                            <div formArrayName="boxes" >
+                                                    <!-- <input type="checkbox"  [formControlName] = "i" [checked]="reservation.status"> {{reservation.name}} -->
+                                                    <!-- <mat-checkbox class="example-margin"  [formControlName] = "i" [checked]="reservation.status">{{reservation.name}}</mat-checkbox> -->
+                                                    {{reservation.name}} <span (click)="returnToTable(reservation.id)">X</span>
+                                        </div>
+                                    </div>
+                                  </div>  
+                    </ng-container>
+                 </div>
+            </div>
+                 
+            
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+             
+</div>
+<h6>Table</h6>
+<div class="table-wrapper">
+        <table class="table table-bordered ">
+            <thead>
+            <tr >
+              <th scope="col">#</th>
+              <ng-container *ngFor="let header of reservTitleObject; let i=index">
+                    <th *ngIf="header.status==true" scope="col" >{{header.name}}</th>
+              </ng-container>
+              
+              
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reservation of reservations; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <ng-container *ngFor="let prop of reservTitleObject">
+                    <td *ngIf="prop.status==true">
+              
+                            {{ reservation[prop.name] }}
+                          </td>
+              </ng-container>
+              
+               
+            </tr>
+            </tbody>
+          </table>
+    </div>
+    

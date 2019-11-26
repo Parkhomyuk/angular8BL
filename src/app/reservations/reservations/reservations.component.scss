@@ -1,0 +1,27 @@
+.table-responsive{
+  margin: 0 0.5vw;
+}
+table {
+    width: 100%;
+    
+    thead{
+      tr{
+        border-color: transparent;
+        border-top: 0px solid grey;
+      }
+    }
+    
+    tbody{
+      tr{
+         
+       
+        border-radius: 10px;
+        
+        td, th{
+             
+         
+        }
+      }
+       
+    }
+  }
