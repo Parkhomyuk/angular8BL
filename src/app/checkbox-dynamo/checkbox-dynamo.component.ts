@@ -2,6 +2,7 @@ import { Component, OnInit, OnChanges,  SimpleChanges, DoCheck } from '@angular/
 import {ReservationsService} from '../services/reservations.service';
 import {FormBuilder, FormGroup, FormControl, FormArray} from '@angular/forms';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class Box{
   id: number;
   name: string
@@ -19,15 +20,18 @@ export class Box{
   styleUrls: ['./checkbox-dynamo.component.scss']
 })
 export class CheckboxDynamoComponent implements OnInit, OnChanges {
-  reservTitle: any[]=[]; 
-  reservTitleObject: {id: number, name: string, status: boolean}[]=[];  
+  reservTitle: any[]=[];
+  reservTitleObject: {id: number, name: string, status: boolean}[]=[];
   formServ: FormGroup;
   checkBoxes: FormArray;
   reservations: any[];
-  constructor(private reservationsService: ReservationsService, private fb: FormBuilder) {
+  constructor(private reservationsService: ReservationsService, private fb: FormBuilder,  config: NgbModalConfig, private modalService: NgbModal) {
+    //noinspection TypeScriptValidateTypes
+    config.backdrop = 'static';
+    config.keyboard = false;
     this.formServ= this.fb.group({
       boxes: this.fb.array([])
-    }     
+    }
     )
    }
 
@@ -53,14 +57,15 @@ export class CheckboxDynamoComponent implements OnInit, OnChanges {
   }
   ngDoCheck(){
     console.log("DO CHECK");
-    
-     
+
+
 
   }
 
   addBox(item){
-    
-     this.checkBoxes=this.formServ.get('boxes') as FormArray
+
+     //noinspection TypeScriptUnresolvedFunction
+    this.checkBoxes=this.formServ.get('boxes') as FormArray
      this.checkBoxes.push(this.fb.control(item));
   }
 
@@ -68,7 +73,7 @@ export class CheckboxDynamoComponent implements OnInit, OnChanges {
     console.log('form', this.formServ.value.boxes);
     for(let i=0;i<this.reservTitleObject.length;i++){
       this.reservTitleObject[i].status=this.formServ.value.boxes[i];
-     
+
     }
 
     console.log('form complite', this.reservTitleObject);
@@ -78,16 +83,21 @@ export class CheckboxDynamoComponent implements OnInit, OnChanges {
       if(this.reservTitleObject[i].id==id){
         this.reservTitleObject[i].status=true;
         this.checkBoxes[i]=true;
-        
+
       }
-       
+
     }
-    console.log('ngModel', this.formServ.get('boxes')[0]);
+
 
   }
-   
+
   dropTable(event: CdkDragDrop<Box[]>) {
+    //noinspection TypeScriptUnresolvedVariable,TypeScriptValidateTypes
     moveItemInArray(this.reservTitleObject, event.previousIndex, event.currentIndex);
+  }
+
+  open(content) {
+    this.modalService.open(content, {scrollable: true});
   }
 
 }

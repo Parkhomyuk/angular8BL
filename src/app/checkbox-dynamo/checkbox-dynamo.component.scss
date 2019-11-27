@@ -1,5 +1,118 @@
-.wrapper{
+.table-wrapper{
+
+  .table-header{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    padding: 1vh 2vw;
+    .header-button-group{
+      .btn{
+        margin: 0 0.1rem;
+      }
+    }
+  }
+  .filter {
+    margin: 0 1vw;
+    -webkit-box-shadow: 10px 11px 5px -5px rgba(179,172,179,0.54);
+    -moz-box-shadow: 10px 11px 5px -5px rgba(179,172,179,0.54);
+    box-shadow: 10px 11px 5px -5px rgba(179,172,179,0.54);
+  }
+  .table-bordered{
+    -webkit-box-shadow: 10px 11px 5px -5px rgba(179,172,179,0.54);
+    -moz-box-shadow: 10px 11px 5px -5px rgba(179,172,179,0.54);
+    box-shadow: 10px 11px 5px -5px rgba(179,172,179,0.54);
+    margin: 1vh 1vw;
+    thead{
+      tr{
+        th{
+          background-color: #e9ecef;
+          text-align: center;
+          cursor: pointer;
+          .sort-group-header{
+
+            width: 100%;
+            display: none;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            text-align: center;
+            justify-content: space-between;
+
+
+          }
+
+        }
+        th:hover{
+          background-color: rgba(170, 147, 244, 0.11);
+          text-align: center;
+          cursor: pointer;
+
+          .sort-group-header{
+
+
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            text-align: center;
+            justify-content: space-between;
+            .down{
+              translate: rotate(90deg);
+            }
+          }
+        }
+
+      }
+    }
+    .wrapper{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: flex-start;
+      width: auto;
+      background-color: lemonchiffon;
+
+      .example-list{
+        overflow: scroll;
+        border: 1px solid grey;
+      }
+    }
+  }
+
+}
+.choose{
+  margin-top: 0.5rem;
+}
+.modal-body{
+  height: 100%;
+
+  .card-body{
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    .selected-card, .card-choose{
+      overflow: hidden;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 0.5rem 0 0.5rem;
+      margin: 0.5rem 0 0.5rem 0;
+      width: 100%;
+      .boxes{
+
+      }
+    }
+    .card-choose{
+
+    }
+
+  }
+
 }

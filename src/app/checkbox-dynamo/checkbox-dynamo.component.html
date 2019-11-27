@@ -1,65 +1,142 @@
-<div class="wrapper">
-        <form [formGroup]="formServ" (ngSubmit)="onSubmit()"  >
-            <div class="wrapper">
-                <div class="item" cdkDropList class="example-list" (cdkDropListDropped)="dropTable($event)">
-                        <div *ngFor="let reservation of reservTitleObject; let i=index" cdkDrag>
-                                <div class="card" *ngIf="reservation.status==true">
-                                        <div class="card-body">
-                                                <div formArrayName="boxes" >
-                                                        <!-- <input type="checkbox"  [formControlName] = "i" [checked]="reservation.status"> {{reservation.name}} -->
-                                                        <mat-checkbox class="example-margin"  [formControlName] = "i" [checked]="reservation.status" [(ngModel)]="reservation.status">{{reservation.name}}</mat-checkbox>
-                                            </div>
-                                        </div>
-                                      </div>
-                                   
-                                    </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Manage columns</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="formServ" (ngSubmit)="onSubmit()">
+      <div class=" row no-gutters">
+        <div class="col-5 col-sm-3 col-md-4">
+          <h6>Choose columns</h6>
+          <ng-container *ngFor="let reservation of reservTitleObject; let i=index">
+            <div class="card choose" *ngIf="reservation.status==false"  >
+              <div class="card-body ">
+                <div formArrayName="boxes" class="card-choose">
+                  <!-- <input type="checkbox"  [formControlName] = "i" [checked]="reservation.status"> {{reservation.name}} -->
+                  <!-- <mat-checkbox class="example-margin"  [formControlName] = "i" [checked]="reservation.status">{{reservation.name}}</mat-checkbox> -->
+                  {{reservation.name | title}}  <mat-icon style="cursor: pointer " (click)="returnToTable(reservation.id)">select_all</mat-icon>
                 </div>
-                <div class="item">
-                    <ng-container *ngFor="let reservation of reservTitleObject; let i=index">
-                            <div class="card" *ngIf="reservation.status==false" style="margin: 0.7vh 0 0.8vh 0">
-                                    <div class="card-body">
-                                            <div formArrayName="boxes" >
-                                                    <!-- <input type="checkbox"  [formControlName] = "i" [checked]="reservation.status"> {{reservation.name}} -->
-                                                    <!-- <mat-checkbox class="example-margin"  [formControlName] = "i" [checked]="reservation.status">{{reservation.name}}</mat-checkbox> -->
-                                                    {{reservation.name}} <span (click)="returnToTable(reservation.id)">X</span>
-                                        </div>
-                                    </div>
-                                  </div>  
-                    </ng-container>
-                 </div>
+              </div>
             </div>
-                 
-            
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
-             
-</div>
-<h6>Table</h6>
+          </ng-container>
+        </div>
+        <div class="col-1 col-md-1" style="display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center; padding: 0;">
+          <div style="border-right: 1px solid lightgrey;"></div>
+          <div></div>
+        </div>
+        <div class="col-4 col-md-4" cdkDropList class="example-list" (cdkDropListDropped)="dropTable($event)">
+          <h6>Selected columns</h6>
+          <div *ngFor="let reservation of reservTitleObject; let i=index" cdkDrag>
+            <div class="card" *ngIf="reservation.status==true">
+              <div class="card-body selected-card">
+                <div formArrayName="boxes" class=" selected-card">
+
+                  <mat-checkbox class="" [formControlName]="i" [checked]="reservation.status"
+                                [(ngModel)]="reservation.status">{{reservation.name | title}}
+                  </mat-checkbox>
+                  <mat-icon style="cursor: pointer ">drag_indicator</mat-icon>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"  >Save to local Storage</button>
+    <button type="button" class="btn btn-outline-dark"  >Save to Me</button>
+  </div>
+</ng-template>
+
+
+<!--table-->
 <div class="table-wrapper">
-        <table class="table table-bordered ">
-            <thead>
-            <tr >
-              <th scope="col">#</th>
-              <ng-container *ngFor="let header of reservTitleObject; let i=index">
-                    <th *ngIf="header.status==true" scope="col" >{{header.name}}</th>
-              </ng-container>
-              
-              
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let reservation of reservations; index as i">
-              <th scope="row">{{ i + 1 }}</th>
-              <ng-container *ngFor="let prop of reservTitleObject">
-                    <td *ngIf="prop.status==true">
-              
-                            {{ reservation[prop.name] }}
-                          </td>
-              </ng-container>
-              
-               
-            </tr>
-            </tbody>
-          </table>
+  <div class="table-header">
+    <h2>Reservations</h2>
+    <div class="header-button-group">
+      <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+        <!-- <i class="material-icons">computer</i> -->
+        <mat-icon style="">shuffle</mat-icon>
+      </button>
+      <button class="btn btn-sm btn-outline-warning filter " >
+        <!-- <i class="material-icons">computer</i> -->
+        <mat-icon style="">filter_list</mat-icon>
+      </button>
+      <button class="btn btn-sm btn-outline-warning filter active" >
+        <!-- <i class="material-icons">computer</i> -->
+        <mat-icon style="">search</mat-icon>
+      </button>
     </div>
-    
+
+  </div>
+  <!--filter-->
+  <div class="card filter">
+    <div class="card-header">
+     search parametrs
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <div class=" ">
+          <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">name</button>
+          </form>
+        </div>
+        <!--<footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>-->
+      </blockquote>
+    </div>
+  </div>
+
+
+  <!--filter-->
+  <table class="table table-bordered ">
+    <thead>
+    <tr class="header">
+
+      <th scope="col" class="header">
+        <mat-checkbox class="">
+
+        </mat-checkbox>
+      </th>
+      <th scope="col" class="header">#</th>
+      <ng-container *ngFor="let header of reservTitleObject; let i=index">
+        <th *ngIf="header.status==true" scope="col" class="">
+          <div>{{header.name | title}}</div>
+          <div class="sort-group-header">
+
+            <mat-icon >vertical_align_bottom</mat-icon>
+            <mat-icon style="">vertical_align_top</mat-icon>
+          </div>
+
+        </th>
+      </ng-container>
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let reservation of reservations; index as i">
+      <th  >
+        <mat-checkbox class="">
+        </mat-checkbox>
+      </th>
+      <th scope="row">{{ i + 1 }}</th>
+      <ng-container *ngFor="let prop of reservTitleObject">
+        <td *ngIf="prop.status==true">
+
+          {{ reservation[prop.name] }}
+        </td>
+      </ng-container>
+
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
