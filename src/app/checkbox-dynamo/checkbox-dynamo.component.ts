@@ -25,6 +25,9 @@ export class CheckboxDynamoComponent implements OnInit, OnChanges {
   formServ: FormGroup;
   checkBoxes: FormArray;
   reservations: any[];
+  openSearch: boolean= false;
+
+
   constructor(private reservationsService: ReservationsService, private fb: FormBuilder,  config: NgbModalConfig, private modalService: NgbModal) {
     //noinspection TypeScriptValidateTypes
     config.backdrop = 'static';
@@ -98,6 +101,9 @@ export class CheckboxDynamoComponent implements OnInit, OnChanges {
 
   open(content) {
     this.modalService.open(content, {scrollable: true});
+  }
+  search(){     
+    this.openSearch=!this.openSearch;
   }
 
 }

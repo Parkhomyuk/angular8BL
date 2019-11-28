@@ -61,16 +61,65 @@
     <div class="header-button-group">
       <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
         <!-- <i class="material-icons">computer</i> -->
-        <mat-icon style="">shuffle</mat-icon>
+        <mat-icon  >shuffle</mat-icon>
       </button>
       <button class="btn btn-sm btn-outline-warning filter " >
         <!-- <i class="material-icons">computer</i> -->
-        <mat-icon style="">filter_list</mat-icon>
+        <mat-icon  >filter_list</mat-icon>
       </button>
-      <button class="btn btn-sm btn-outline-warning filter active" >
+      <button class="btn btn-sm btn-outline-warning filter active" (click)="search()">
         <!-- <i class="material-icons">computer</i> -->
-        <mat-icon style="">search</mat-icon>
+        <mat-icon  >search</mat-icon>
       </button>
+      <button class="btn btn-sm btn-outline-danger filter" (click)="open(content)" >
+          <!-- <i class="material-icons">computer</i> -->
+          <mat-icon  >remove</mat-icon>
+        </button>
+        <button class="btn btn-sm btn-outline-success filter" (click)="open(content)" >
+            <!-- <i class="material-icons">computer</i> -->
+            <mat-icon  >add</mat-icon>
+          </button>
+          <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+              <!-- <i class="material-icons">computer</i> -->
+              <mat-icon  >input</mat-icon>
+            </button>
+            <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                <!-- <i class="material-icons">computer</i> -->
+                <mat-icon  >system_update_alt</mat-icon>
+              </button>
+              <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                  <!-- <i class="material-icons">computer</i> -->
+                  <mat-icon  >insert_photo</mat-icon>
+                </button>
+                <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                    <!-- <i class="material-icons">computer</i> -->
+                    <mat-icon  >file_copy</mat-icon>
+                  </button>
+                  <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                      <!-- <i class="material-icons">computer</i> -->
+                      <mat-icon  >av_timer</mat-icon>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                        <!-- <i class="material-icons">computer</i> -->
+                        <mat-icon  >view_list</mat-icon>
+                      </button>
+                      <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                          <!-- <i class="material-icons">computer</i> -->
+                          <mat-icon  >add</mat-icon><mat-icon  >person_outline</mat-icon>
+                        </button>
+                        <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                            <!-- <i class="material-icons">computer</i> -->
+                            <mat-icon  >remove</mat-icon><mat-icon  >person_outline</mat-icon>
+                          </button>
+                          <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                              <!-- <i class="material-icons">computer</i> -->
+                              <mat-icon  >mail_outline</mat-icon> 
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary filter" (click)="open(content)" >
+                                <!-- <i class="material-icons">computer</i> -->
+                                <mat-icon  >sms</mat-icon> 
+                              </button>
+              
     </div>
 
   </div>
@@ -101,7 +150,11 @@
       <th scope="col" class="header">
         <mat-checkbox class="">
 
-        </mat-checkbox>
+        </mat-checkbox>      
+        
+      </th>
+      <th>
+         ins
       </th>
       <th scope="col" class="header">#</th>
       <ng-container *ngFor="let header of reservTitleObject; let i=index">
@@ -110,7 +163,7 @@
           <div class="sort-group-header">
 
             <mat-icon >vertical_align_bottom</mat-icon>
-            <mat-icon style="">vertical_align_top</mat-icon>
+            <mat-icon  >vertical_align_top</mat-icon>
           </div>
 
         </th>
@@ -120,10 +173,20 @@
     </tr>
     </thead>
     <tbody>
+      <tr *ngIf="openSearch==true">
+        <th colspan="2" style="font-size: 0.7rem;  border: 1px solid  lightgrey; background-color: rgb(255, 254, 251);">Type for search</th>
+         
+          <th  *ngFor="let search of reservTitleObject; let i=index" style="font-size: 0.7rem;  border: 1px solid  lightgrey; background-color: rgb(255, 254, 251);">
+        <input id="typeahead-basic" type="text" class="form-control"   />
+          </th>
+      </tr>
     <tr *ngFor="let reservation of reservations; index as i">
       <th  >
         <mat-checkbox class="">
         </mat-checkbox>
+      </th>
+      <th>
+          <mat-icon  >more_horiz</mat-icon>
       </th>
       <th scope="row">{{ i + 1 }}</th>
       <ng-container *ngFor="let prop of reservTitleObject">
@@ -140,3 +203,182 @@
 </div>
 
 
+ <div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-icon mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Data-Upload"></i>
+                    <p class="text-muted mt-2 mb-2">Today's Upload</p>
+                    <p class="text-primary text-24 line-height-1 m-0">21</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-icon mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Add-User"></i>
+                    <p class="text-muted mt-2 mb-2">New Users</p>
+                    <p class="text-primary text-24 line-height-1 m-0">21</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-icon mb-4">
+                <div class="card-body text-center">
+                    <i class="i-Money-2"></i>
+                    <p class="text-muted mt-2 mb-2">Total sales</p>
+                    <p class="text-primary text-24 line-height-1 m-0">4021</p>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-icon-big mb-4" style="-webkit-box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);
+            box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);">
+                <div class="card-body text-center">
+                    <i class="i-Money-2"></i>
+                    <p class="line-height-1 text-title text-18 mt-2 mb-0">4021</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-icon-big mb-4" style="-webkit-box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);
+            box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);">
+                <div class="card-body text-center">
+                    <i class="i-Gear"></i>
+                    <p class="line-height-1 text-title text-18 mt-2 mb-0">4021</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="card card-icon-big mb-4" style="-webkit-box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);
+            -moz-box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);
+            box-shadow: 0px -1px 31px -19px rgba(0,0,0,0.75);">
+                <div class="card-body text-center">
+                    <i class="i-Bell"></i>
+                    <p class="line-height-1 text-title text-18 mt-2 mb-0">4021</p>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+ 
+ <div class="container">
+   <div class="row">
+    <div class="col-md-12 mb-4">
+      <div class="card text-left">
+
+          <div class="card-body">
+              <h4 class="card-title mb-3">Alternative pagination</h4>
+
+              <p>The default page control presented by DataTables (forward and backward buttons with up to 7 page numbers in-between) is fine for most situations, but there are cases where you may wish to customise the options presented to
+                  the end user. This is done through DataTables' extensible pagination mechanism, the <a href="//datatables.net/reference/option/pagingType"><code class="option" title="DataTables initialisation option">pagingType</code></a> option.</p>
+
+              <div class="table-responsive">
+                  <div id="alternative_pagination_table_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="alternative_pagination_table_length"><label>Show <select name="alternative_pagination_table_length" aria-controls="alternative_pagination_table" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="alternative_pagination_table_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="alternative_pagination_table"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="alternative_pagination_table" class="display table table-striped table-bordered dataTable" style="width: 100%;" role="grid" aria-describedby="alternative_pagination_table_info">
+                   <thead>
+                          <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="alternative_pagination_table" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 190px;">Name</th><th class="sorting" tabindex="0" aria-controls="alternative_pagination_table" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 288px;">Position</th><th class="sorting" tabindex="0" aria-controls="alternative_pagination_table" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 145px;">Office</th><th class="sorting" tabindex="0" aria-controls="alternative_pagination_table" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 75px;">Age</th><th class="sorting" tabindex="0" aria-controls="alternative_pagination_table" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 141px;">Start date</th><th class="sorting" tabindex="0" aria-controls="alternative_pagination_table" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 103px;">Salary</th></tr>
+                      </thead>
+                      <tbody>
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+
+
+                      <tr role="row" class="odd">
+                              <td class="sorting_1">Airi Satou</td>
+                              <td>Accountant</td>
+                              <td>Tokyo</td>
+                              <td>33</td>
+                              <td>2008/11/28</td>
+                              <td>$162,700</td>
+                          </tr><tr role="row" class="even">
+                              <td class="sorting_1">Ashton Cox</td>
+                              <td>Junior Technical Author</td>
+                              <td>San Francisco</td>
+                              <td>66</td>
+                              <td>2009/01/12</td>
+                              <td>$86,000</td>
+                          </tr><tr role="row" class="odd">
+                              <td class="sorting_1">Brielle Williamson</td>
+                              <td>Integration Specialist</td>
+                              <td>New York</td>
+                              <td>61</td>
+                              <td>2012/12/02</td>
+                              <td>$372,000</td>
+                          </tr><tr role="row" class="even">
+                              <td class="sorting_1">Cedric Kelly</td>
+                              <td>Senior Javascript Developer</td>
+                              <td>Edinburgh</td>
+                              <td>22</td>
+                              <td>2012/03/29</td>
+                              <td>$433060</td>
+                          </tr><tr role="row" class="odd">
+                              <td class="sorting_1">Colleen Hurst</td>
+                              <td>Javascript Developer</td>
+                              <td>San Francisco</td>
+                              <td>39</td>
+                              <td>2009/09/15</td>
+                              <td>$205,500</td>
+                          </tr><tr role="row" class="even">
+                              <td class="sorting_1">Garrett Winters</td>
+                              <td>Accountant</td>
+                              <td>Tokyo</td>
+                              <td>63</td>
+                              <td>2011/07/25</td>
+                              <td>$170,750</td>
+                          </tr><tr role="row" class="odd">
+                              <td class="sorting_1">Herrod Chandler</td>
+                              <td>Sales Assistant</td>
+                              <td>San Francisco</td>
+                              <td>59</td>
+                              <td>2012/08/06</td>
+                              <td>$137,500</td>
+                          </tr><tr role="row" class="even">
+                              <td class="sorting_1">Jena Gaines</td>
+                              <td>Office Manager</td>
+                              <td>London</td>
+                              <td>30</td>
+                              <td>2008/12/19</td>
+                              <td>$90,560</td>
+                          </tr><tr role="row" class="odd">
+                              <td class="sorting_1">Quinn Flynn</td>
+                              <td>Support Lead</td>
+                              <td>Edinburgh</td>
+                              <td>22</td>
+                              <td>2013/03/03</td>
+                              <td>$342,000</td>
+                          </tr><tr role="row" class="even">
+                              <td class="sorting_1">Rhona Davidson</td>
+                              <td>Integration Specialist</td>
+                              <td>Tokyo</td>
+                              <td>55</td>
+                              <td>2010/10/14</td>
+                              <td>$327,900</td>
+                          </tr></tbody>
+                      <tfoot>
+                          <tr><th rowspan="1" colspan="1">Name</th><th rowspan="1" colspan="1">Position</th><th rowspan="1" colspan="1">Office</th><th rowspan="1" colspan="1">Age</th><th rowspan="1" colspan="1">Start date</th><th rowspan="1" colspan="1">Salary</th></tr>
+                      </tfoot>
+                  </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="alternative_pagination_table_info" role="status" aria-live="polite">Showing 1 to 10 of 12 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_full_numbers" id="alternative_pagination_table_paginate"><ul class="pagination"><li class="paginate_button page-item first disabled" id="alternative_pagination_table_first"><a href="#" aria-controls="alternative_pagination_table" data-dt-idx="0" tabindex="0" class="page-link">First</a></li><li class="paginate_button page-item previous disabled" id="alternative_pagination_table_previous"><a href="#" aria-controls="alternative_pagination_table" data-dt-idx="1" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="alternative_pagination_table" data-dt-idx="2" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="alternative_pagination_table" data-dt-idx="3" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next" id="alternative_pagination_table_next"><a href="#" aria-controls="alternative_pagination_table" data-dt-idx="4" tabindex="0" class="page-link">Next</a></li><li class="paginate_button page-item last" id="alternative_pagination_table_last"><a href="#" aria-controls="alternative_pagination_table" data-dt-idx="5" tabindex="0" class="page-link">Last</a></li></ul></div></div></div></div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+   </div>
+ </div>
