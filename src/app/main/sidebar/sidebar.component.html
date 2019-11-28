@@ -3,7 +3,7 @@
             <ul class="navigation-left">
                 <li class="nav-item active" data-item="dashboard">
                     <div class="nav-item" >
-                       <button mat-button class="button-menu">
+                       <button mat-button class="button-menu" [style.color]="togleActive.home ? 'rgb(172, 126, 219)' : 'grey'" [ngClass]="togleActive.home ? 'button-active' : 'button-menu'" (click)="clickTab('home')">
                             <mat-icon>home</mat-icon>
                             <div class="nav-text">HOME</div>
                         </button>                       
@@ -12,7 +12,7 @@
                 </li>
                 <li class="nav-item" data-item="uikits">
                     <div class="nav-item" >
-                    <button mat-button class="button-menu">
+                    <button mat-button class="button-menu" [style.color]="togleActive.home ? 'rgb(172, 126, 219)' : 'grey'" [ngClass]="togleActive.home ? 'button-active' : 'button-menu'" (click)="clickTab('equipment')">
                             <mat-icon>date_range</mat-icon>
                             <div class="nav-text">EQUIPMENT</div>
                         </button>                       

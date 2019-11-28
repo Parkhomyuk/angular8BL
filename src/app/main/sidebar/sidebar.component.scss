@@ -66,6 +66,21 @@
                     justify-content: center;
                     flex-wrap: nowrap;
                     align-items: center;
+                    color: $active-font-color; 
+                    padding: $base-font-size;
+                    .nav-text{                        
+                         margin-top: -$base-font-size/2;
+                    }
+                }
+                .button-active{
+                    
+                    width: 100%;
+                    height: 60px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    flex-wrap: nowrap;
+                    align-items: center;
                     -webkit-box-shadow: inset 10px 10px 16px -15px rgba(0,0,0,0.5);
                     -moz-box-shadow: inset 10px 10px 16px -15px rgba(0,0,0,0.5);
                     box-shadow: inset 10px 10px 16px -15px rgba(0,0,0,0.5);
