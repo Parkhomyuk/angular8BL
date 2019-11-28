@@ -26,9 +26,18 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { CheckboxComponent } from './checkbox/checkbox.component';
 import { CheckboxDynamoComponent } from './checkbox-dynamo/checkbox-dynamo.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
- 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+
+
+
 import { TitlePipe } from './pipes/title.pipe';
+import { MainComponent } from './main/main.component';
+import { HeaderComponent } from './main/header/header.component';
+import { SidebarComponent } from './main/sidebar/sidebar.component';
+import { FooterComponent } from './main/footer/footer.component';
+import { MainPageComponent } from './main/main-page/main-page.component';
  
 @NgModule({
   declarations: [
@@ -37,7 +46,12 @@ import { TitlePipe } from './pipes/title.pipe';
     TableComponent,
     CheckboxComponent,
     CheckboxDynamoComponent,
-    TitlePipe
+    TitlePipe,
+    MainComponent,
+    HeaderComponent,
+    SidebarComponent,
+    FooterComponent,
+    MainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +74,9 @@ import { TitlePipe } from './pipes/title.pipe';
     ReactiveFormsModule,
     MatCheckboxModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    FontAwesomeModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]
